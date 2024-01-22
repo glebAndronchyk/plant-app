@@ -7,7 +7,10 @@
       "@components/*": ["./src/components/*"],
       "@screens/*": ["./src/screens/*"],
       "@styled": ["./src/components/styled/index"],
-      "@theme/*": ["./src/theme/*"]
+      "@theme/*": ["./src/theme/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@icons/*": ["./src/assets/icons/*"],
+      "@app_types/*": ["./src/types/*"]
     }
   }
 }

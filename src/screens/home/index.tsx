@@ -1,6 +1,25 @@
-import {StyledText} from '@styled';
-import {SIZES} from '@theme/sizes.ts';
+import {Button} from '@components/Button';
+import {View} from 'react-native';
+import SearchIcon from '@icons/search.svg';
 
 export const HomeScreen = () => {
-  return <StyledText style={{fontSize: SIZES['2xl']}}>Typography</StyledText>;
+  return (
+    <View
+      style={{
+        position: 'relative',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#DFDBDB',
+      }}>
+      <Button
+        label="Label"
+        variant="filled"
+        size="lg"
+        LeftIcon={SearchIcon}
+        RightIcon={SearchIcon}
+      />
+    </View>
+  );
 };

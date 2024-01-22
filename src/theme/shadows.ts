@@ -10,16 +10,16 @@ export const shadow = StyleSheet.create({
     shadowColor: COLORS.PRIMARY,
     shadowRadius: 6,
     shadowOpacity: 0.45,
-    elevation: 6,
+    elevation: 20,
   },
   sm: {
     shadowColor: COLORS.SECONDARY,
     shadowOffset: {
       width: 0,
-      height: 1,
+      height: 2,
     },
     shadowRadius: 3,
     shadowOpacity: 0.3,
-    elevation: 5,
+    elevation: 10,
   },
 });

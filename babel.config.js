@@ -1,7 +1,6 @@
 module.exports = {
   presets: ['module:@react-native/babel-preset'],
   plugins: [
-    'nativewind/babel',
     [
       'module-resolver',
       {
@@ -11,6 +10,9 @@ module.exports = {
           '@screens': './src/screens',
           '@styled': './src/components/styled/index',
           '@theme': './src/theme',
+          '@utils': './src/utils',
+          '@icons': './src/assets/icons',
+          '@app_types': './src/types',
         },
       },
     ],

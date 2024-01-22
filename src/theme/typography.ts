@@ -13,37 +13,37 @@ export const FONT_NUNITO: Record<FONT_WEIGHTS, string> = {
 };
 
 // Regular font weight and color were applied directly to StyledText component
-const TypographyStyles = StyleSheet.create({
-  h1: {
+const Typography = StyleSheet.create({
+  '3xl': {
     fontSize: SIZES['3xl'],
     fontFamily: FONT_NUNITO.bold,
     lineHeight: SIZES['6xl'],
   },
-  h2: {
+  '2xl': {
     fontSize: SIZES['2xl'],
     fontFamily: FONT_NUNITO.bold,
     lineHeight: SIZES['5xl'],
   },
-  h3: {
+  xl: {
     fontSize: SIZES.xl,
     fontFamily: FONT_NUNITO.bold,
     lineHeight: SIZES['4xl'],
   },
-  s1: {
+  lg: {
     fontSize: SIZES.lg,
     fontFamily: FONT_NUNITO.bold,
     lineHeight: SIZES['3xl'],
   },
-  s2: {
+  md: {
     fontSize: SIZES.md,
     fontFamily: FONT_NUNITO.bold,
     lineHeight: SIZES['2xl'],
   },
-  b1: {
+  mdRegular: {
     fontSize: SIZES.md,
     lineHeight: SIZES['2xl'],
   },
-  b2: {
+  smRegular: {
     fontSize: SIZES.sm,
     lineHeight: SIZES['2xl'],
   },
@@ -54,4 +54,4 @@ const TypographyStyles = StyleSheet.create({
   },
 });
 
-export default TypographyStyles;
+export default Typography;

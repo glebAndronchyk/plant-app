@@ -19,5 +19,6 @@ export const COLORS = {
     200: '#B4E197',
     300: '#59754F',
   },
+  WHITE: '#fff',
   SUPPORT: '#D33030',
 };
