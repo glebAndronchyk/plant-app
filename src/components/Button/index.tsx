@@ -23,17 +23,19 @@ export const Button = ({
   const currentVariant = variantsStyles(!!props.disabled)[variant];
   const currentSize = sizesStyles[size];
   const shadowRadiusAnimation = useRef(new Animated.Value(3)).current;
-  const [currentColor, setCurrentColor] = useState(COLORS.SECONDARY);
+  const [currentShadowColor, setCurrentShadowColor] = useState(
+    COLORS.SECONDARY,
+  );
 
   const resetAnimation = ({finished}: {finished: boolean}) => {
     if (finished) {
       shadowRadiusAnimation.resetAnimation();
-      setCurrentColor(COLORS.SECONDARY);
+      setCurrentShadowColor(COLORS.SECONDARY);
     }
   };
 
   const onPressIn = (e: GestureResponderEvent) => {
-    setCurrentColor(COLORS.PRIMARY);
+    setCurrentShadowColor(COLORS.PRIMARY);
     Animated.timing(shadowRadiusAnimation, animationConfig).start(
       resetAnimation,
     );
@@ -43,13 +45,16 @@ export const Button = ({
   return (
     <Animated.View
       style={[
-        getShadowInterpolatedByRadius(shadowRadiusAnimation, currentColor),
+        getShadowInterpolatedByRadius(
+          shadowRadiusAnimation,
+          currentShadowColor,
+        ),
         currentVariant.wrapper,
         currentSize.pressable,
       ]}>
       <Pressable
         {...props}
-        style={defaultButtonStyles.wrapper}
+        style={defaultButtonStyles.pressable}
         onPressIn={onPressIn}>
         {LeftIcon && <LeftIcon stroke={currentVariant.icon.color} />}
         <StyledText

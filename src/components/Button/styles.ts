@@ -5,7 +5,7 @@ import {SIZES} from '@theme/sizes.ts';
 import Typography from '@theme/typography.ts';
 
 export const defaultButtonStyles = StyleSheet.create({
-  wrapper: {
+  pressable: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
