@@ -1,22 +1,15 @@
 import {StyledText} from '@styled';
 import {useState} from 'react';
-import LottieView from 'lottie-react-native';
 import {View} from 'react-native';
-
-const onboardingAnimation = require('./assets/onboarding.json');
+import {AfterSplashBase} from '@components/animated/lottie/AfterSplashBase';
 
 export const OnboardingScreen = () => {
   const [s, ssr] = useState(false);
 
   return (
     <>
-      <LottieView
-        loop={false}
-        autoPlay
-        style={{flex: 1}}
-        source={onboardingAnimation}
-        resizeMode="cover"
-        renderMode="HARDWARE"
+      <AfterSplashBase
+        source={require('./assets/onboarding.json')}
         onAnimationFinish={() => ssr(true)}
       />
       {s && (
