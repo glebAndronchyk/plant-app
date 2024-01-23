@@ -8,6 +8,7 @@ module.exports = {
   rules: {
     // REACT RULES
     'react/react-in-jsx-scope': OFF,
+    'react-hooks/exhaustive-deps': WARNING,
 
     // JS RULES
     'no-console': ON,

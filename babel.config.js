@@ -15,6 +15,7 @@ module.exports = {
           '@app_types': './src/types',
           '@hooks': './src/hooks',
           '@navigators': './src/navigators/index',
+          '@store': './src/store',
         },
       },
       'react-native-reanimated/plugin',

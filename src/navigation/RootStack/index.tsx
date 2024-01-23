@@ -9,7 +9,7 @@ import {PhoneConfirmationScreen} from '@screens/authorization/phone-confirmation
 const {Navigator, Screen, Group} = RootStackNavigator;
 
 export const RootStack = () => {
-  const {isAuthorized, onboardingShown} = useAuthorization();
+  const {isAuthorized, onboardingWasShown} = useAuthorization();
 
   return (
     <Navigator id="root" initialRouteName="Onboarding">
@@ -18,8 +18,8 @@ export const RootStack = () => {
           <Screen name="Home Tabs" component={HomeTabs} />
         </Group>
       ) : (
-        <Group>
-          {!onboardingShown && (
+        <Group screenOptions={{headerShown: false}}>
+          {!onboardingWasShown && (
             <Screen name="Onboarding" component={OnboardingScreen} />
           )}
           <Screen name="Login" component={LoginScreen} />

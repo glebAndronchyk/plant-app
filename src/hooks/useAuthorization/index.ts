@@ -1,6 +1,6 @@
 export const useAuthorization = () => {
   return {
-    isAuthorized: true,
-    onboardingShown: true,
+    isAuthorized: false,
+    onboardingWasShown: false,
   };
 };
