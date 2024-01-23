@@ -27,7 +27,7 @@ export const Button = ({
     COLORS.SECONDARY,
   );
 
-  const resetAnimation = ({finished}: {finished: boolean}) => {
+  const resetAnimationOnFinish = ({finished}: {finished: boolean}) => {
     if (finished) {
       shadowRadiusAnimation.resetAnimation();
       setCurrentShadowColor(COLORS.SECONDARY);
@@ -37,7 +37,7 @@ export const Button = ({
   const onPressIn = (e: GestureResponderEvent) => {
     setCurrentShadowColor(COLORS.PRIMARY);
     Animated.timing(shadowRadiusAnimation, animationConfig).start(
-      resetAnimation,
+      resetAnimationOnFinish,
     );
     props.onPressIn && props.onPressIn(e);
   };

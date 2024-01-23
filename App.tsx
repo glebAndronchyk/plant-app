@@ -1,10 +1,13 @@
-import {View} from 'react-native';
-import {HomeScreen} from '@screens/home';
+import {NavigationContainer} from '@react-navigation/native';
+import {RootStack} from './src/navigation/RootStack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 export default function App() {
   return (
-    <View>
-      <HomeScreen />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <RootStack />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
