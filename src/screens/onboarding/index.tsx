@@ -1,29 +1,27 @@
 import {StyledText} from '@styled';
-import {useState} from 'react';
+import {useEffect} from 'react';
 import {View} from 'react-native';
-import {AfterSplashBase} from '@components/animated/lottie/AfterSplashBase';
+import {useAppDispatch} from '@store/_hooks/useAppDispatch';
+import {setBootSplashFrames} from '@store/app';
+import {bootSplashFrames} from '@animations/bootSplash/settings.ts';
 
 export const OnboardingScreen = () => {
-  const [s, ssr] = useState(false);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(
+      setBootSplashFrames({frames: bootSplashFrames.onboarding, playing: true}),
+    );
+  }, []);
 
   return (
-    <>
-      <AfterSplashBase
-        source={require('./assets/onboarding.json')}
-        onAnimationFinish={() => ssr(true)}
-      />
-      {s && (
-        <View
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <StyledText>Onboarding</StyledText>
-        </View>
-      )}
-    </>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <StyledText>Onboarding</StyledText>
+    </View>
   );
 };

@@ -1,10 +1,10 @@
 import {AppState} from './typess.ts';
+import {bootSplashFrames} from '@animations/bootSplash/settings.ts';
 
 export const APP_INITIAL_STATE: AppState = {
   isAuthorized: null,
-  globalAnimation: {
-    name: null,
-    keys: [],
-    status: null,
+  bootSplashAnimation: {
+    frames: bootSplashFrames.boot,
+    playing: true,
   },
 };

@@ -1,5 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {APP_INITIAL_STATE} from './settings.ts';
+import {Animation} from '@app_types/animation.ts';
 
 const appSlice = createSlice({
   name: 'app',
@@ -13,7 +14,13 @@ const appSlice = createSlice({
       state.isAuthorized = false;
       //additional logic
     },
-    setGlobalAnimation: () => {},
+    setBootSplashFrames: (state, action: PayloadAction<Animation>) => {
+      state.bootSplashAnimation.frames = action.payload.frames;
+      state.bootSplashAnimation.playing = action.payload.playing;
+    },
+    setBootSplashPlayingStatus: (state, playing: PayloadAction<boolean>) => {
+      state.bootSplashAnimation.playing = playing.payload;
+    },
     resetGlobalAnimation: () => {},
     changeGlobalAnimationStatus: () => {},
     changeGlobalAnimationIntervalKeys: () => {},
@@ -23,7 +30,8 @@ const appSlice = createSlice({
 export const {
   authorizeUser,
   unAuthorizeUser,
-  setGlobalAnimation,
+  setBootSplashFrames,
+  setBootSplashPlayingStatus,
   resetGlobalAnimation,
   changeGlobalAnimationStatus,
   changeGlobalAnimationIntervalKeys,

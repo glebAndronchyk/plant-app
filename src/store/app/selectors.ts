@@ -1,4 +1,5 @@
 import {RootState} from '@store/index.ts';
 
-export const selectAnimation = (state: RootState) => state.app.globalAnimation;
+export const selectBootSplashAnimation = (state: RootState) =>
+  state.app.bootSplashAnimation;
 export const selectIsAuthorized = (state: RootState) => state.app.isAuthorized;

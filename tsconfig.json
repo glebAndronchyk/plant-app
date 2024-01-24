@@ -13,7 +13,8 @@
       "@app_types/*": ["./src/types/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@navigators": ["./src/navigators/index"],
-      "@store/*": ["./src/store/*"]
+      "@store/*": ["./src/store/*"],
+      "@animations/*": ["./src/animations/*"]
     }
   }
 }
