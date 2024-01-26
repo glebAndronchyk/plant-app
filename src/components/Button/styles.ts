@@ -46,8 +46,8 @@ export const sizesStyles: Record<
     pressable: {
       width: '100%',
       paddingVertical: 8,
-      borderRadius: SIZES.md,
     },
+    wrapper: {borderRadius: SIZES.md},
     label: {
       ...Typography.md,
       fontSize: SIZES.sm,
@@ -57,8 +57,8 @@ export const sizesStyles: Record<
     pressable: {
       paddingVertical: 8,
       paddingHorizontal: 32,
-      borderRadius: SIZES.md,
     },
+    wrapper: {borderRadius: SIZES.md},
     label: {
       ...Typography.md,
     },
@@ -69,6 +69,7 @@ export const sizesStyles: Record<
       paddingVertical: 4,
       borderRadius: 8,
     },
+    wrapper: {borderRadius: 8},
     label: {
       ...Typography.md,
     },
@@ -78,6 +79,7 @@ export const sizesStyles: Record<
       paddingHorizontal: 8,
       borderRadius: 8,
     },
+    wrapper: {borderRadius: 8},
     label: {
       ...Typography.caption,
     },

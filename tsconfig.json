@@ -14,7 +14,8 @@
       "@hooks/*": ["./src/hooks/*"],
       "@navigators": ["./src/navigators/index"],
       "@store/*": ["./src/store/*"],
-      "@animations/*": ["./src/animations/*"]
+      "@animations/*": ["./src/animations/*"],
+      "@navigation/*": ["./src/navigation/*"]
     }
   }
 }

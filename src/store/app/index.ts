@@ -21,6 +21,9 @@ const appSlice = createSlice({
     setBootSplashPlayingStatus: (state, playing: PayloadAction<boolean>) => {
       state.bootSplashAnimation.playing = playing.payload;
     },
+    endBoot: state => {
+      state.bootEnded = true;
+    },
     resetGlobalAnimation: () => {},
     changeGlobalAnimationStatus: () => {},
     changeGlobalAnimationIntervalKeys: () => {},
@@ -33,6 +36,7 @@ export const {
   setBootSplashFrames,
   setBootSplashPlayingStatus,
   resetGlobalAnimation,
+  endBoot,
   changeGlobalAnimationStatus,
   changeGlobalAnimationIntervalKeys,
 } = appSlice.actions;

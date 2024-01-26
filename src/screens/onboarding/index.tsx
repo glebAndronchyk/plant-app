@@ -1,27 +1,47 @@
-import {StyledText} from '@styled';
 import {useEffect} from 'react';
-import {View} from 'react-native';
+import Animated, {withTiming} from 'react-native-reanimated';
 import {useAppDispatch} from '@store/_hooks/useAppDispatch';
 import {setBootSplashFrames} from '@store/app';
 import {bootSplashFrames} from '@animations/bootSplash/settings.ts';
+import {useAppSelector} from '@store/_hooks/useAppSelector';
+import {selectBootSplashAnimation} from '@store/app/selectors.ts';
+import {containerStyles} from '@theme/containers.ts';
+import {OnboardingCard} from '@components/cards/OnboardingCard';
+import {OnboardingScreenProps} from './types.ts';
+import {useOnboardingNavigation} from './hooks/useOnboardingNavigation.ts';
 
-export const OnboardingScreen = () => {
+export const OnboardingScreen = ({navigation}: OnboardingScreenProps) => {
   const dispatch = useAppDispatch();
+  const {playing} = useAppSelector(selectBootSplashAnimation);
+
+  const {handlePressSkip, opacity} = useOnboardingNavigation(
+    navigation,
+    dispatch,
+  );
 
   useEffect(() => {
     dispatch(
-      setBootSplashFrames({frames: bootSplashFrames.onboarding, playing: true}),
+      setBootSplashFrames({
+        frames: bootSplashFrames.onboarding,
+        playing: true,
+      }),
     );
   }, []);
 
+  useEffect(() => {
+    if (!playing) {
+      opacity.value = withTiming(1, {duration: 500});
+    }
+  }, [playing]);
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <StyledText>Onboarding</StyledText>
-    </View>
+    <>
+      {!playing && (
+        <Animated.View
+          style={[containerStyles().fullScreenContainer, {opacity}]}>
+          <OnboardingCard handlePressSkip={handlePressSkip} />
+        </Animated.View>
+      )}
+    </>
   );
 };

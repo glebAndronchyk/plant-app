@@ -50,11 +50,11 @@ export const Button = ({
           currentShadowColor,
         ),
         currentVariant.wrapper,
-        currentSize.pressable,
+        currentSize.wrapper,
       ]}>
       <Pressable
         {...props}
-        style={defaultButtonStyles.pressable}
+        style={[defaultButtonStyles.pressable, currentSize.pressable]}
         onPressIn={onPressIn}>
         {LeftIcon && <LeftIcon stroke={currentVariant.icon.color} />}
         <StyledText

@@ -6,6 +6,7 @@ import {useBoot} from './hooks/useBoot.ts';
 import {useAnimationUpdate} from './hooks/useAnimationUpdate.ts';
 import {useAppSelector} from '@store/_hooks/useAppSelector';
 import {selectBootSplashAnimation} from '@store/app/selectors.ts';
+import {containerStyles} from '@theme/containers.ts';
 
 export const BootSplashWrapper = ({children}: PropsWithChildren) => {
   const lottieRef = useRef<LottieView>(null);
@@ -18,10 +19,11 @@ export const BootSplashWrapper = ({children}: PropsWithChildren) => {
       <LottieView
         ref={lottieRef}
         loop={false}
-        hardwareAccelerationAndroid
+        hardwareAccelerationAndroid={true}
         style={styles.lottie}
         source={SplashAnimation}
         resizeMode="cover"
+        renderMode="HARDWARE"
         onAnimationFinish={notifyNextAnimation}
         onAnimationLoaded={endBootLoad}
       />
@@ -32,12 +34,8 @@ export const BootSplashWrapper = ({children}: PropsWithChildren) => {
 
 const styles = StyleSheet.create({
   lottie: {
-    position: 'absolute',
+    ...StyleSheet.absoluteFill,
     zIndex: 1,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
   },
   wrapper: {
     flex: 1,
