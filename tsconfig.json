@@ -15,7 +15,8 @@
       "@navigators": ["./src/navigators/index"],
       "@store/*": ["./src/store/*"],
       "@animations/*": ["./src/animations/*"],
-      "@navigation/*": ["./src/navigation/*"]
+      "@navigation/*": ["./src/navigation/*"],
+      "@asyncStorage/*": ["./src/asyncStorage/*"]
     }
   }
 }

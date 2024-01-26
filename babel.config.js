@@ -18,6 +18,7 @@ module.exports = {
           '@store': './src/store',
           '@animations': './src/animations',
           '@navigation': './src/navigation',
+          '@asyncStorage': './src/asyncStorage',
         },
       },
     ],

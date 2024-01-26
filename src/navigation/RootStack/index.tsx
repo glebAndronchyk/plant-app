@@ -11,7 +11,7 @@ import {authTheme} from './settings';
 const {Navigator, Screen, Group} = RootStackNavigator;
 
 export const RootStack = () => {
-  const {isAuthorized, onboardingWasShown} = useAuthorization();
+  const {isAuthorized, onboardingComplete} = useAuthorization();
 
   return (
     <NavigationContainer theme={!isAuthorized ? authTheme : DefaultTheme}>
@@ -26,7 +26,7 @@ export const RootStack = () => {
               headerShown: false,
               animationEnabled: false,
             }}>
-            {!onboardingWasShown && (
+            {!onboardingComplete && (
               <Screen name="Onboarding" component={OnboardingScreen} />
             )}
             <Screen name="Login" component={LoginScreen} />

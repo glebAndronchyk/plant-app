@@ -5,3 +5,5 @@ export const selectBootSplashAnimation = (state: RootState) =>
 export const selectIsAuthorized = (state: RootState) => state.app.isAuthorized;
 
 export const selectBootStatus = (state: RootState) => state.app.bootEnded;
+export const selectOnboardingStatus = (state: RootState) =>
+  state.app.onboardingComplete;

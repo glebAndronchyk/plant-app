@@ -6,10 +6,10 @@ import {ActionButtons} from './ActionButtons';
 import {OnboardingCardProps} from './types.ts';
 import {OnboardingCards} from '@screens/onboarding/settings.ts';
 import {useRef, useState} from 'react';
-import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {ITEM_COUNT, ITEM_SIZE} from './settings.ts';
 import {containers, dot, onboardingStyles} from './styles.ts';
 import {OnboardingCardSignature} from '@screens/onboarding/types.ts';
+import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 export const OnboardingCard = ({handlePressSkip}: OnboardingCardProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,6 +32,7 @@ export const OnboardingCard = ({handlePressSkip}: OnboardingCardProps) => {
         blurAmount={3}
       />
       <Carousel
+        vertical={false}
         ref={carouselRef}
         data={OnboardingCards}
         itemWidth={ITEM_SIZE}
