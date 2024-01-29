@@ -8,6 +8,8 @@ import {LoginFormFields} from './types.ts';
 import {useNavigation} from '@react-navigation/native';
 import {StyledTextInput} from '@components/inputs/StyledInput';
 import {PasswordInput} from '@components/inputs/PasswordInput';
+import {toFormikValidationSchema} from 'zod-formik-adapter';
+import {loginSchema} from '@components/forms/LoginForm/schema.ts';
 
 export const LoginForm = () => {
   const {navigate} = useNavigation();
@@ -22,17 +24,30 @@ export const LoginForm = () => {
       <StyledText style={Typography.mdRegular}>
         Select the appropriate option to authorize your identity
       </StyledText>
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        {({handleChange, handleSubmit, isValid, errors}) => (
+      <Formik
+        validateOnMount
+        validationSchema={toFormikValidationSchema(loginSchema)}
+        initialValues={initialValues}
+        onSubmit={onSubmit}>
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isValid,
+          errors,
+          touched,
+        }) => (
           <>
             <StyledTextInput
+              onBlur={handleBlur('email')}
               onChangeText={handleChange('email')}
               placeholder="Email"
-              errorMessage={errors.email}
+              errorMessage={touched.email && errors.email}
             />
             <PasswordInput
+              onBlur={handleBlur('password')}
               onChangeText={handleChange('password')}
-              errorMessage={errors.password}
+              errorMessage={touched.password && errors.password}
             />
             <Button
               label="Log in"

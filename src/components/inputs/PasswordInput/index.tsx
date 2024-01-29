@@ -4,16 +4,13 @@ import {StyledTextInputProps} from '@components/inputs/StyledInput/types.ts';
 import EyeClosedIcon from '@icons/eye-closed.svg';
 import EyeIcon from '@icons/eye.svg';
 
-interface PasswordInputProps
-  extends Pick<
-    StyledTextInputProps,
-    'onChangeText' | 'errorMessage' | 'placeholder'
-  > {}
+interface PasswordInputProps extends StyledTextInputProps {}
 
 export const PasswordInput = ({
   onChangeText,
   errorMessage,
   placeholder = 'Password',
+  ...props
 }: PasswordInputProps) => {
   return (
     <StyledTextInput
@@ -21,6 +18,7 @@ export const PasswordInput = ({
       onChangeText={onChangeText}
       placeholder={placeholder}
       errorMessage={errorMessage}
+      {...props}
       RightIconComponent={({toggleText, isTextHidden, color}) => {
         const Icon = isTextHidden ? EyeClosedIcon : EyeIcon;
 

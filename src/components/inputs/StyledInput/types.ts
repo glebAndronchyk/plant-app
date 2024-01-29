@@ -1,7 +1,6 @@
 import {TextInputProps} from 'react-native';
 import {ReactElement} from 'react';
 import {VoidFn} from '@app_types/utility.ts';
-import {COLORS} from '@theme/colors.ts';
 
 export interface StyledTextInputProps
   extends Omit<
@@ -9,7 +8,7 @@ export interface StyledTextInputProps
     'cursorColor' | 'placeholderTextColor' | 'secureTextEntry' | 'style'
   > {
   defaultHidden?: boolean;
-  errorMessage?: string;
+  errorMessage?: string | false;
   RightIconComponent?: ({
     hideText,
     uncoverText,
