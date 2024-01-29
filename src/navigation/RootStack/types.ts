@@ -1,14 +1,16 @@
 import {StackScreenProps} from '@react-navigation/stack';
+import {bootSplashFrames} from '@animations/bootSplash/settings.ts';
 
 export type RootStackParamList = {
   HomeTabs: undefined;
   Onboarding: undefined;
-  Login: undefined;
-  Registration: undefined;
-  PhoneConfirmation: undefined;
+  AuthStack: {
+    animationKey: keyof typeof bootSplashFrames;
+    dependOnPreviousAnimation: boolean;
+  };
 };
 
-export type RootNavigationProps<P extends keyof RootStackParamList> =
+export type RootNavigationProps<P extends keyof RootStackParamList = any> =
   StackScreenProps<RootStackParamList, P>;
 
 export type WithRootNavigationProps<

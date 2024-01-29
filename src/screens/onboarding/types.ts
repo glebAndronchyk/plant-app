@@ -1,5 +1,5 @@
 import {ImageSourcePropType} from 'react-native';
-import {RootNavigationProps} from '@navigation/types.ts';
+import {RootNavigationProps} from '@navigation/RootStack/types.ts';
 
 export interface OnboardingCardSignature {
   title: string;

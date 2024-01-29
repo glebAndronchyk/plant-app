@@ -39,6 +39,11 @@ const Typography = StyleSheet.create({
     fontFamily: FONT_NUNITO.bold,
     lineHeight: SIZES['2xl'],
   },
+  sm: {
+    fontSize: SIZES.sm,
+    fontFamily: FONT_NUNITO.bold,
+    lineHeight: SIZES['2xl'],
+  },
   mdRegular: {
     fontSize: SIZES.md,
     lineHeight: SIZES['2xl'],
@@ -46,6 +51,7 @@ const Typography = StyleSheet.create({
   smRegular: {
     fontSize: SIZES.sm,
     lineHeight: SIZES['2xl'],
+    fontFamily: FONT_NUNITO.regular,
   },
   caption: {
     fontSize: SIZES.xs,

@@ -14,10 +14,7 @@ export const OnboardingScreen = ({navigation}: OnboardingScreenProps) => {
   const dispatch = useAppDispatch();
   const {playing} = useAppSelector(selectBootSplashAnimation);
 
-  const {handlePressSkip, opacity} = useOnboardingNavigation(
-    navigation,
-    dispatch,
-  );
+  const {handlePressSkip, opacity} = useOnboardingNavigation(navigation);
 
   useEffect(() => {
     dispatch(

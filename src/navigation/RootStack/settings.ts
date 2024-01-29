@@ -7,3 +7,8 @@ export const authTheme = {
     background: 'transparent',
   },
 };
+
+export const unAuthorizedGroupScreenOptions = {
+  headerShown: false,
+  animationEnabled: false,
+};

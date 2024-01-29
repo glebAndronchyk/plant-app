@@ -1,6 +1,5 @@
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, View} from 'react-native';
 import {StyledText} from '@styled';
-import {BlurView} from '@react-native-community/blur';
 import Typography from '@theme/typography.ts';
 import {ActionButtons} from './ActionButtons';
 import {OnboardingCardProps} from './types.ts';
@@ -10,6 +9,7 @@ import {ITEM_COUNT, ITEM_SIZE} from './settings.ts';
 import {containers, dot, onboardingStyles} from './styles.ts';
 import {OnboardingCardSignature} from '@screens/onboarding/types.ts';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
+import {Blur} from '@components/Blur';
 
 export const OnboardingCard = ({handlePressSkip}: OnboardingCardProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -26,11 +26,7 @@ export const OnboardingCard = ({handlePressSkip}: OnboardingCardProps) => {
 
   return (
     <View style={containers.container}>
-      <BlurView
-        style={StyleSheet.absoluteFill}
-        blurType="xlight"
-        blurAmount={3}
-      />
+      <Blur />
       <Carousel
         vertical={false}
         ref={carouselRef}

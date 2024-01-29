@@ -7,4 +7,9 @@ export const containerStyles = () =>
       justifyContent: 'center',
       alignItems: 'center',
     },
+    fullCentered: {
+      alignSelf: 'center',
+      alignItems: 'center',
+      marginHorizontal: 'auto',
+    },
   });
