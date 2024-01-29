@@ -2,12 +2,13 @@ import {RefObject} from 'react';
 import BootSplash from 'react-native-bootsplash';
 import LottieView from 'lottie-react-native';
 import {Animation} from '@app_types/animation.ts';
-import {completeOnboarding, endBoot} from '@store/app';
+import {authorizeUser, completeOnboarding, endBoot} from '@store/app';
 import {useAppSelector} from '@store/_hooks/useAppSelector';
 import {selectBootStatus} from '@store/app/selectors.ts';
 import {useAppDispatch} from '@store/_hooks/useAppDispatch';
 import {ASYNC_STORAGE_KEYS} from '@asyncStorage/keys.ts';
 import {useAsyncStorage} from '@react-native-async-storage/async-storage';
+import {user} from '@API';
 
 export const useBoot = (
   lottieRef: RefObject<LottieView>,
@@ -20,15 +21,19 @@ export const useBoot = (
   );
 
   const onAnimationLoaded = () => {
-    getOnboardingStatusFromStorage().then(result => {
-      result && dispatch(completeOnboarding());
-      // Timer used for iphone boot screen (white flickering)
-      setTimeout(async () => {
-        await BootSplash.hide();
-        lottieRef.current!.play(...frames);
-        dispatch(endBoot());
-      }, 1000);
-    });
+    Promise.all([user.getSession(), getOnboardingStatusFromStorage()]).then(
+      ([session, onboardingStatus]) => {
+        onboardingStatus && dispatch(completeOnboarding());
+        !session.error && dispatch(authorizeUser());
+
+        // Timer used for iphone boot screen (white flickering)
+        setTimeout(async () => {
+          await BootSplash.hide();
+          lottieRef.current!.play(...frames);
+          dispatch(endBoot());
+        }, 1000);
+      },
+    );
   };
 
   return {bootEnded, onAnimationLoaded};

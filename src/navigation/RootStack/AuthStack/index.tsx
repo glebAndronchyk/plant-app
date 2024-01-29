@@ -13,18 +13,20 @@ import {Blur} from '@components/Blur';
 import {useAppSelector} from '@store/_hooks/useAppSelector';
 import {selectBootSplashAnimation} from '@store/app/selectors.ts';
 import {AuthStackProps} from './types.ts';
+import {usePreventGoingBack} from '@hooks/usePreventGoingBack';
 
 const {Navigator, Screen} = AuthStackNavigator;
 
-export const AuthStack = ({route}: AuthStackProps) => {
+export const AuthStack = ({route, navigation}: AuthStackProps) => {
   const dispatch = useAppDispatch();
   const {playing} = useAppSelector(selectBootSplashAnimation);
+
+  usePreventGoingBack(navigation);
 
   const {animationKey, dependOnPreviousAnimation} = route.params;
 
   useEffect(() => {
     const frames = bootSplashFrames[animationKey];
-
     dispatch(setBootSplashFrames({frames, playing: dependOnPreviousAnimation}));
   }, []);
 
