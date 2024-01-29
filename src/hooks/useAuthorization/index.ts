@@ -1,15 +1,11 @@
 import {useAppSelector} from '@store/_hooks/useAppSelector';
-import {
-  selectIsAuthorized,
-  selectOnboardingStatus,
-} from '@store/app/selectors.ts';
+import {selectAppState} from '@store/app/selectors.ts';
 
 export const useAuthorization = () => {
-  const onboardingComplete = useAppSelector(selectOnboardingStatus);
-  const isAuthorized = useAppSelector(selectIsAuthorized);
+  const {isAuthorized, onboardingComplete} = useAppSelector(selectAppState);
 
   return {
     isAuthorized,
-    onboardingComplete: false,
+    onboardingComplete,
   };
 };

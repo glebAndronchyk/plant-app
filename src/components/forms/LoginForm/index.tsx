@@ -10,8 +10,9 @@ import {PasswordInput} from '@components/inputs/PasswordInput';
 import {toFormikValidationSchema} from 'zod-formik-adapter';
 import {loginSchema} from '@components/forms/LoginForm/schema.ts';
 import {useAppDispatch} from '@store/_hooks/useAppDispatch';
-import {authorizeUser} from '@store/app';
 import {RootNavigation} from '@navigation/RootStack/types.ts';
+import {user} from '@API';
+import {authorizeUser} from '@store/app';
 
 // TODO NAVIGATION TYPES SHOULD BE REFACTORED
 interface LoginFormProps {
@@ -20,9 +21,12 @@ interface LoginFormProps {
 
 export const LoginForm = ({navigation}: LoginFormProps) => {
   const dispatch = useAppDispatch();
-  const onSubmit = (values: LoginFormFields) => {
-    dispatch(authorizeUser());
-    navigation.navigate('HomeTabs');
+  const onSubmit = async ({email, password}: LoginFormFields) => {
+    const resp = await user.login(email, password);
+    if (!resp.error) {
+      dispatch(authorizeUser());
+      navigation.navigate('HomeTabs');
+    }
   };
 
   return (

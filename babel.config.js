@@ -3,6 +3,7 @@ module.exports = {
   plugins: [
     [
       'module-resolver',
+      // 'react-native-dotenv',
       {
         alias: {
           src: '.',
@@ -19,6 +20,7 @@ module.exports = {
           '@animations': './src/animations',
           '@navigation': './src/navigation',
           '@asyncStorage': './src/asyncStorage',
+          '@API': './src/API/index',
         },
       },
     ],
