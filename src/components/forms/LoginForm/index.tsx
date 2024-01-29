@@ -5,17 +5,24 @@ import {Button} from '@components/Button';
 import {Formik} from 'formik';
 import {initialValues} from './settings.ts';
 import {LoginFormFields} from './types.ts';
-import {useNavigation} from '@react-navigation/native';
 import {StyledTextInput} from '@components/inputs/StyledInput';
 import {PasswordInput} from '@components/inputs/PasswordInput';
 import {toFormikValidationSchema} from 'zod-formik-adapter';
 import {loginSchema} from '@components/forms/LoginForm/schema.ts';
+import {useAppDispatch} from '@store/_hooks/useAppDispatch';
+import {authorizeUser} from '@store/app';
+import {RootNavigation} from '@navigation/RootStack/types.ts';
 
-export const LoginForm = () => {
-  const {navigate} = useNavigation();
+// TODO NAVIGATION TYPES SHOULD BE REFACTORED
+interface LoginFormProps {
+  navigation: RootNavigation;
+}
+
+export const LoginForm = ({navigation}: LoginFormProps) => {
+  const dispatch = useAppDispatch();
   const onSubmit = (values: LoginFormFields) => {
-    console.log(values);
-    // navigate('Home');
+    dispatch(authorizeUser());
+    navigation.navigate('HomeTabs');
   };
 
   return (
