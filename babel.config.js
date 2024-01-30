@@ -21,6 +21,7 @@ module.exports = {
           '@navigation': './src/navigation',
           '@asyncStorage': './src/asyncStorage',
           '@API': './src/API/index',
+          '@constants': './src/constants',
         },
       },
     ],

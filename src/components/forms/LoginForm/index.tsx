@@ -2,7 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import {StyledText} from '@styled';
 import Typography from '@theme/typography.ts';
 import {Button} from '@components/Button';
-import {Formik} from 'formik';
+import {Field, FieldProps, Formik} from 'formik';
 import {initialValues} from './settings.ts';
 import {LoginFormFields} from './types.ts';
 import {StyledTextInput} from '@components/inputs/StyledInput';
@@ -13,6 +13,7 @@ import {useAppDispatch} from '@store/_hooks/useAppDispatch';
 import {RootNavigation} from '@navigation/RootStack/types.ts';
 import {user} from '@API';
 import {authorizeUser} from '@store/app';
+import {FieldNames} from '@constants/fieldNames.ts';
 
 // TODO NAVIGATION TYPES SHOULD BE REFACTORED
 interface LoginFormProps {
@@ -40,26 +41,34 @@ export const LoginForm = ({navigation}: LoginFormProps) => {
         validationSchema={toFormikValidationSchema(loginSchema)}
         initialValues={initialValues}
         onSubmit={onSubmit}>
-        {({
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isValid,
-          errors,
-          touched,
-        }) => (
+        {({handleSubmit, isValid}) => (
           <>
-            <StyledTextInput
-              onBlur={handleBlur('email')}
-              onChangeText={handleChange('email')}
-              placeholder="Email"
-              errorMessage={touched.email && errors.email}
-            />
-            <PasswordInput
-              onBlur={handleBlur('password')}
-              onChangeText={handleChange('password')}
-              errorMessage={touched.password && errors.password}
-            />
+            <Field name={FieldNames.EMAIL}>
+              {({
+                field: {name, onChange, onBlur},
+                meta: {error, touched},
+              }: FieldProps) => (
+                <StyledTextInput
+                  name={name}
+                  onChangeText={onChange(name)}
+                  onBlur={onBlur(name)}
+                  errorMessage={touched && error}
+                />
+              )}
+            </Field>
+            <Field name={FieldNames.PASSWORD}>
+              {({
+                field: {name, onChange, onBlur},
+                meta: {error, touched},
+              }: FieldProps) => (
+                <PasswordInput
+                  name={name}
+                  onChangeText={onChange(name)}
+                  onBlur={onBlur(name)}
+                  errorMessage={touched && error}
+                />
+              )}
+            </Field>
             <Button
               label="Log in"
               onPress={() => handleSubmit()}

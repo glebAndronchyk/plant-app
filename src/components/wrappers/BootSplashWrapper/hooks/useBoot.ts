@@ -21,10 +21,10 @@ export const useBoot = (
   );
 
   const onAnimationLoaded = () => {
-    Promise.all([user.getSession(), getOnboardingStatusFromStorage()]).then(
-      ([session, onboardingStatus]) => {
+    Promise.all([user.getUser(), getOnboardingStatusFromStorage()]).then(
+      ([userData, onboardingStatus]) => {
         onboardingStatus && dispatch(completeOnboarding());
-        !session.error && dispatch(authorizeUser());
+        !userData.error && dispatch(authorizeUser());
 
         // Timer used for iphone boot screen (white flickering)
         setTimeout(async () => {

@@ -9,14 +9,12 @@ interface PasswordInputProps extends StyledTextInputProps {}
 export const PasswordInput = ({
   onChangeText,
   errorMessage,
-  placeholder = 'Password',
   ...props
 }: PasswordInputProps) => {
   return (
     <StyledTextInput
       defaultHidden
       onChangeText={onChangeText}
-      placeholder={placeholder}
       errorMessage={errorMessage}
       {...props}
       RightIconComponent={({toggleText, isTextHidden, color}) => {

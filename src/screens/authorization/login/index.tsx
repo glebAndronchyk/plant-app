@@ -2,7 +2,7 @@ import {View} from 'react-native';
 import {LoginForm} from '@components/forms/LoginForm';
 import {BetweenTextDivider} from '@components/dividers/BetweenTextDivider';
 import {OtherVariantsLogin} from '@components/OtherVariantsLogin';
-import {DontHaveAccount} from '@components/DontHaveAccount';
+import {AuthorizationProposal} from '@components/AuthorizationProposal';
 import {RootNavigation} from '@navigation/RootStack/types.ts';
 
 interface LoginScreenProps {
@@ -15,7 +15,7 @@ export const LoginScreen = ({navigation}: LoginScreenProps) => {
       <LoginForm navigation={navigation} />
       <BetweenTextDivider label="or" />
       <OtherVariantsLogin />
-      <DontHaveAccount />
+      <AuthorizationProposal type="sign-up" />
     </View>
   );
 };

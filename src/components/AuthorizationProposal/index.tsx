@@ -5,9 +5,15 @@ import {useNavigation} from '@react-navigation/native';
 import {containerStyles} from '@theme/containers.ts';
 import {AuthStackNavigation} from '@navigation/RootStack/AuthStack/types.ts';
 
-export const DontHaveAccount = () => {
+interface AuthorizationProposalProps {
+  type: 'sign-up' | 'log-in';
+}
+
+export const AuthorizationProposal = ({type}: AuthorizationProposalProps) => {
   const {navigate} = useNavigation<AuthStackNavigation>();
   const onSignUp = () => navigate('Registration');
+  const onLogIn = () => navigate('Login');
+  const isSignUp = type === 'sign-up';
 
   return (
     <View
@@ -16,9 +22,13 @@ export const DontHaveAccount = () => {
         ...containerStyles().fullCentered,
         ...Typography.smRegular,
       }}>
-      <StyledText>Don't have an account? </StyledText>
-      <Pressable onPress={onSignUp}>
-        <StyledText style={Typography.sm}>Sign Up</StyledText>
+      <StyledText>
+        {isSignUp ? "Don't" : 'Already'} have an account?{' '}
+      </StyledText>
+      <Pressable onPress={isSignUp ? onSignUp : onLogIn}>
+        <StyledText style={Typography.sm}>
+          {isSignUp ? 'Sign up' : 'Log in'}
+        </StyledText>
       </Pressable>
     </View>
   );
