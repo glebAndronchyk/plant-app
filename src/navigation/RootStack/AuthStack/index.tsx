@@ -3,7 +3,7 @@ import {LoginScreen} from '@screens/authorization/login';
 import {RegistrationScreen} from '@screens/authorization/registration';
 import {PhoneConfirmationScreen} from '@screens/authorization/phone-confirmation';
 import {unAuthorizedGroupScreenOptions} from '../settings.ts';
-import {StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import {bootSplashFrames} from '@animations/bootSplash/settings.ts';
 import {useEffect} from 'react';
 import {useAppDispatch} from '@store/_hooks/useAppDispatch';
@@ -14,6 +14,7 @@ import {useAppSelector} from '@store/_hooks/useAppSelector';
 import {selectBootSplashAnimation} from '@store/app/selectors.ts';
 import {AuthStackProps} from './types.ts';
 import {usePreventGoingBack} from '@hooks/usePreventGoingBack';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const {Navigator, Screen} = AuthStackNavigator;
 
@@ -38,16 +39,22 @@ export const AuthStack = ({route, navigation}: AuthStackProps) => {
             entering={SlideInDown.duration(1000)}
             style={styles.container}>
             <Blur />
-            <Navigator
-              screenOptions={unAuthorizedGroupScreenOptions}
-              initialRouteName="Login">
-              <Screen name="Login" component={LoginScreen} />
-              <Screen name="Registration" component={RegistrationScreen} />
-              <Screen
-                name="PhoneConfirmation"
-                component={PhoneConfirmationScreen}
-              />
-            </Navigator>
+            <KeyboardAwareScrollView
+              enableOnAndroid
+              extraScrollHeight={200}
+              enableAutomaticScroll={Platform.OS === 'ios'}
+              contentContainerStyle={{flex: 1}}>
+              <Navigator
+                screenOptions={unAuthorizedGroupScreenOptions}
+                initialRouteName="Login">
+                <Screen name="Login" component={LoginScreen} />
+                <Screen name="Registration" component={RegistrationScreen} />
+                <Screen
+                  name="PhoneConfirmation"
+                  component={PhoneConfirmationScreen}
+                />
+              </Navigator>
+            </KeyboardAwareScrollView>
           </Animated.View>
         </View>
       )}

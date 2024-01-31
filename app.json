@@ -1,4 +1,7 @@
 {
   "name": "PlantApp",
-  "displayName": "PlantApp"
+  "displayName": "PlantApp",
+  "androidStatusBar": {
+    "backgroundColor": "#000000"
+  }
 }
