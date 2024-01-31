@@ -137,9 +137,7 @@ const styles = (withError: boolean, isFocused: boolean) => {
       flex: 1,
       height: INPUT_HEIGHT,
       paddingHorizontal: 12,
-      position: 'relative',
-      top: isIOS ? -5 : 0,
-      bottom: !isIOS ? -10 : 0,
+      top: isIOS ? -7 : 'auto',
     },
     rightIcon: {
       position: 'absolute',
