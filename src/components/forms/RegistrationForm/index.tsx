@@ -19,12 +19,15 @@ export const RegistrationForm = ({navigation}) => {
   const onSubmit = async ({
     email,
     password,
-    ...metaData
+    phoneNumber,
+    firstName,
   }: RegistrationFormFields) => {
-    const {data, error} = await user.register(email, password, {
-      phoneNumber: metaData.phoneNumber,
-      firstName: metaData.firstName,
+    const {error} = await user.register(email, password, phoneNumber, {
+      firstName,
     });
+
+    if (!error) {
+    }
   };
 
   return (
@@ -63,6 +66,7 @@ export const RegistrationForm = ({navigation}) => {
                   }: FieldProps) => (
                     <StyledTextInput
                       name={name}
+                      keyboardType="numeric"
                       mask={ukrainianPhoneMask}
                       onChangeText={onChange(name)}
                       onBlur={onBlur(name)}
