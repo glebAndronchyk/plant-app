@@ -14,6 +14,7 @@ export const PasswordInput = ({
   return (
     <StyledTextInput
       defaultHidden
+      autoCapitalize="none"
       onChangeText={onChangeText}
       errorMessage={errorMessage}
       {...props}
