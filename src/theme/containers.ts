@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from '@theme/colors.ts';
 
 export const containerStyles = () =>
   StyleSheet.create({
@@ -12,4 +13,21 @@ export const containerStyles = () =>
       alignItems: 'center',
       marginHorizontal: 'auto',
     },
+    marginContainer: {
+      marginHorizontal: 16,
+    },
+    paddingContainer: {
+      paddingVertical: 16,
+      paddingHorizontal: 16,
+    },
   });
+
+export const headerContainerStyle = StyleSheet.compose(
+  containerStyles().paddingContainer,
+  {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginBottom: 8,
+    backgroundColor: COLORS.WHITE,
+  },
+);

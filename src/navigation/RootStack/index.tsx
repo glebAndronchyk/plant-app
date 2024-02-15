@@ -16,7 +16,11 @@ export const RootStack = () => {
       <Navigator id="root" initialRouteName="Onboarding">
         {isAuthorized ? (
           <Group>
-            <Screen name="HomeTabs" component={HomeTabs} />
+            <Screen
+              name="HomeTabs"
+              options={{headerShown: false}}
+              component={HomeTabs}
+            />
           </Group>
         ) : (
           <Group screenOptions={unAuthorizedGroupScreenOptions}>
