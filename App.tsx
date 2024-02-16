@@ -3,6 +3,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {UserAuthorizationWrapper} from '@components/wrappers/UserAuthorizationWrapper';
 import {StoreWrapper} from '@components/wrappers/StoreWrapper';
 import {BootSplashWrapper} from '@components/wrappers/BootSplashWrapper';
+import {GeolocationWrapper} from '@components/wrappers/GeolocationWrapper';
 
 export default function App() {
   return (
@@ -10,7 +11,9 @@ export default function App() {
       <UserAuthorizationWrapper>
         <SafeAreaProvider>
           <BootSplashWrapper>
-            <RootStack />
+            <GeolocationWrapper>
+              <RootStack />
+            </GeolocationWrapper>
           </BootSplashWrapper>
         </SafeAreaProvider>
       </UserAuthorizationWrapper>

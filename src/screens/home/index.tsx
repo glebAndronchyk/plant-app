@@ -1,25 +1,15 @@
-import {Button} from '@components/Button';
 import {View} from 'react-native';
-import SearchIcon from '@icons/search.svg';
+import {WeatherWidget} from '@components/WeatherWidget';
+import {containerStyles} from '@theme/containers.ts';
 
 export const HomeScreen = () => {
   return (
-    <View
-      style={{
-        position: 'relative',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#DFDBDB',
-      }}>
-      <Button
-        label="Label"
-        variant="filled"
-        size="lg"
-        LeftIcon={SearchIcon}
-        RightIcon={SearchIcon}
-      />
+    <View style={containerStyles().marginContainer}>
+      <WeatherWidget />
+      {/*<SearchPlant />*/}
+      {/*<Garden />*/}
+      {/*<ShareCareLog />*/}
+      {/*<RecommendedChats />*/}
     </View>
   );
 };

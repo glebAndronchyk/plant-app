@@ -1,8 +1,11 @@
 import {OSMService} from './service.ts';
-import {OSMReverseSignature} from '@app_types/api/types.ts';
+import {OSMLocationResponse, OSMReverseSignature} from '@app_types/api/osm.ts';
 
 export class OSMController {
   constructor(private service: OSMService) {}
-  getByLocation = async (data: OSMReverseSignature) =>
-    await this.service.getByLocation(data);
+  getByLocation = async (data: OSMReverseSignature) => {
+    const response = await this.service.getByLocation(data);
+
+    return (await response.json()) as OSMLocationResponse;
+  };
 }
