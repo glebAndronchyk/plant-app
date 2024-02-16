@@ -1,7 +1,9 @@
 import {createClient} from '@supabase/supabase-js';
-import {UserController, UserService} from './user';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import {Database} from '@app_types/generated/api.ts';
+
+import {UserController, UserService} from './user';
+import {OSMController, OSMService} from './osm';
 
 const projectUrl = process.env.PROJECT_URL;
 const apiKey = process.env.SUPABASE_ACCESS_TOKEN;
@@ -16,6 +18,7 @@ export const supabase = createClient<Database>(projectUrl, apiKey, {
   },
 });
 
-export const {user} = {
+export const {user, osm} = {
   user: new UserController(new UserService()),
+  osm: new OSMController(new OSMService()),
 };
