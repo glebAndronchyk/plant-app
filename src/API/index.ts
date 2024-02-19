@@ -35,7 +35,7 @@ const supabaseControl = <T extends Record<string, any>>(controller: T) => {
             );
           }
 
-          return data;
+          return {data};
         };
       }
 

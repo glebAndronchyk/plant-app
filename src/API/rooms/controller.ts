@@ -8,4 +8,6 @@ export class RoomsController {
   update = async (id: string, roomData: RoomData) =>
     await this.service.update(id, roomData);
   remove = async (id: string) => await this.service.remove(id);
+  getSingle = async (id: string) => await this.service.getSingle(id);
+  getAll = async () => await this.service.getAll();
 }
