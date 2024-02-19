@@ -8,7 +8,13 @@ import {useWeatherVariantContext} from '../WeatherVariantWrapper/hooks/useWeathe
 import {useGeolocationContext} from '@components/wrappers/GeolocationWrapper/hooks/useGeolocationContext';
 
 const ClockText = ({children}: PropsWithChildren) => {
-  return <StyledText style={Typography.xlRegular}>{children}</StyledText>;
+  const {styles: variantStyles} = useWeatherVariantContext();
+
+  return (
+    <StyledText style={[Typography.xlRegular, variantStyles.text]}>
+      {children}
+    </StyledText>
+  );
 };
 
 export const MetaInfo = () => {
