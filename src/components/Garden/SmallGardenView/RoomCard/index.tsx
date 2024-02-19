@@ -25,7 +25,7 @@ export const RoomCard = ({room}: RoomCardProps) => {
           <ThreeFlowerPlantIcon />
         </View>
       </View>
-      <TextLayer title="Title" titleTextAlign="center" />
+      <TextLayer title={room.name} titleTextAlign="center" />
     </ImageCard>
   );
 };

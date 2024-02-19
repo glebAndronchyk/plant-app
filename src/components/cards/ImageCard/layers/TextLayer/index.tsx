@@ -4,7 +4,7 @@ import Typography from '@theme/typography.ts';
 import {COLORS} from '@theme/colors.ts';
 
 export interface TextLayerProps {
-  title?: string;
+  title?: string | null;
   description?: string;
   titleTextAlign?: TextStyle['textAlign'];
   descriptionTextAlign?: TextStyle['textAlign'];
