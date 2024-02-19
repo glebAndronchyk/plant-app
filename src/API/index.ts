@@ -20,9 +20,35 @@ export const supabase = createClient<Database>(projectUrl, apiKey, {
   },
 });
 
+const supabaseControl = <T extends Record<string, any>>(controller: T) => {
+  return new Proxy<typeof controller>(controller, {
+    get: (target, prop) => {
+      const field = Reflect.get(target, prop);
+
+      if (typeof field === 'function') {
+        return async (...args: any[]) => {
+          const {error, data} = await (field as Function)(...args);
+
+          if (error) {
+            throw new Error(
+              `Error calling ${prop.toString()}: ${error.message}`,
+            );
+          }
+
+          return data;
+        };
+      }
+
+      return field;
+    },
+  });
+};
+
 export const {user, osm, weather, rooms} = {
   user: new UserController(new UserService()),
   osm: new OSMController(new OSMService()),
   weather: new WeatherController(new WeatherService()),
-  rooms: new RoomsController(new RoomsService()),
+  rooms: supabaseControl<RoomsController>(
+    new RoomsController(new RoomsService()),
+  ),
 };
