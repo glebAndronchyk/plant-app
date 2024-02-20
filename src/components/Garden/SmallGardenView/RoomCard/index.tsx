@@ -16,9 +16,13 @@ export const RoomCard = ({room}: RoomCardProps) => {
   return (
     <ImageCard
       containerStyle={styles.container}
-      imageSource={{
-        uri: room.imageUrl || 'placeholder',
-      }}>
+      imageSource={
+        room.imageUrl
+          ? {
+              uri: room.imageUrl,
+            }
+          : require('@images/room-placeholder.png')
+      }>
       <View style={styles.cardTop}>
         <View style={styles.plantAmountWidget}>
           <StyledText style={styles.amount}>{room.plant_ids.length}</StyledText>
