@@ -1,3 +1,1 @@
-export interface CardBase {
-
-}
+export interface CardBase {}

@@ -1,4 +1,3 @@
-import {useEffect, useState} from 'react';
 import {rooms} from '@API';
 import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
 
