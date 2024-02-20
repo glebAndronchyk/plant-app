@@ -3,6 +3,7 @@ import {WeatherWidget} from '@components/WeatherWidget';
 import {containerStyles} from '@theme/containers.ts';
 import {SmallGardenView} from '@components/Garden/SmallGardenView';
 import {InfoCards} from '@components/InfoCards';
+import {RecommendedChats} from '@components/RecommendedChats';
 
 export const HomeScreen = () => {
   return (
@@ -11,7 +12,7 @@ export const HomeScreen = () => {
       <WeatherWidget />
       <SmallGardenView />
       <InfoCards />
-      {/*<RecommendedChats />*/}
+      <RecommendedChats />
     </ScrollView>
   );
 };
