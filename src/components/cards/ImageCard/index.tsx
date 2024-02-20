@@ -24,6 +24,7 @@ export const ImageCard = ({
 }: ImageCardProps) => {
   return (
     <ImageBackground
+      resizeMode="cover"
       source={imageSource}
       style={[styles.container, styles[variant]]}>
       <Pressable

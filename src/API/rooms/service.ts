@@ -1,9 +1,9 @@
 import {supabase} from '../index.ts';
 import {RoomData} from '@app_types/api/rooms.ts';
-import {APIResponse} from '@app_types/api';
+import {APIResponse, SupabaseService} from '@app_types/api';
 
-export class RoomsService {
-  private tableName = 'plant_rooms' as const;
+export class RoomsService implements SupabaseService {
+  tableName = 'plant_rooms' as const;
 
   create = async (data: RoomData) =>
     await supabase.from(this.tableName).insert(data);

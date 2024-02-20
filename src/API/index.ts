@@ -6,6 +6,7 @@ import {UserController, UserService} from './user';
 import {OSMController, OSMService} from './osm';
 import {WeatherController, WeatherService} from './weather';
 import {RoomsController, RoomsService} from './rooms';
+import {CMSController, CMSService} from './cms';
 
 const projectUrl = process.env.PROJECT_URL;
 const apiKey = process.env.SUPABASE_ACCESS_TOKEN;
@@ -44,10 +45,11 @@ const supabaseControl = <T extends Record<string, any>>(controller: T) => {
   });
 };
 
-export const {user, osm, weather, rooms} = {
-  user: new UserController(new UserService()),
+export const {user, osm, weather, rooms, cms} = {
+  user: supabaseControl(new UserController(new UserService())),
   osm: new OSMController(new OSMService()),
   weather: new WeatherController(new WeatherService()),
+  cms: supabaseControl(new CMSController(new CMSService())),
   rooms: supabaseControl<RoomsController>(
     new RoomsController(new RoomsService()),
   ),

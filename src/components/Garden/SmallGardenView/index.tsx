@@ -4,26 +4,14 @@ import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
 
 import {PlusCard} from './PlusCard';
 import {RoomCard} from './RoomCard';
-import {RoomRow} from '@app_types/api/rooms.ts';
 import {StyledText} from '@styled';
 import Typography from '@theme/typography.ts';
+import {useSupabaseOnMount} from '@hooks/useSupabaseOnMount';
 
 const {width: screenWidth} = Dimensions.get('window');
 
 export const SmallGardenView = () => {
-  const [userRooms, setUserRooms] = useState<RoomRow[]>([]);
-
-  useEffect(() => {
-    const getRooms = async () => {
-      const {data} = await rooms.getAll();
-
-      if (data) {
-        setUserRooms(data);
-      }
-    };
-
-    getRooms();
-  }, []);
+  const {data: userRooms} = useSupabaseOnMount(rooms.getAll);
 
   return (
     <View>
@@ -31,7 +19,7 @@ export const SmallGardenView = () => {
       <ScrollView
         horizontal={true}
         contentContainerStyle={{gap: screenWidth / 16}}>
-        {userRooms.map(room => (
+        {userRooms?.map(room => (
           <RoomCard key={room.id} room={room} />
         ))}
         <PlusCard />

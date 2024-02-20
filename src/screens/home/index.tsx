@@ -2,6 +2,7 @@ import {ScrollView} from 'react-native';
 import {WeatherWidget} from '@components/WeatherWidget';
 import {containerStyles} from '@theme/containers.ts';
 import {SmallGardenView} from '@components/Garden/SmallGardenView';
+import {InfoCards} from '@components/InfoCards';
 
 export const HomeScreen = () => {
   return (
@@ -9,7 +10,7 @@ export const HomeScreen = () => {
       contentContainerStyle={[containerStyles().marginContainer, {gap: 24}]}>
       <WeatherWidget />
       <SmallGardenView />
-      {/*<ShareCareLog />*/}
+      <InfoCards />
       {/*<RecommendedChats />*/}
     </ScrollView>
   );

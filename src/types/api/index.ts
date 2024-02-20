@@ -5,3 +5,7 @@ export type APIResponse<
   T extends keyof Database['public']['Tables'],
   A extends 'array' | 'non-array' = 'non-array',
 > = PostgrestSingleResponse<A extends 'array' ? Tables<T>[] : Tables<T>>;
+
+export interface SupabaseService {
+  tableName: string;
+}
