@@ -9,6 +9,7 @@ import {useAppDispatch} from '@store/_hooks/useAppDispatch';
 import {ASYNC_STORAGE_KEYS} from '@asyncStorage/keys.ts';
 import {useAsyncStorage} from '@react-native-async-storage/async-storage';
 import {user} from '@API';
+import {Platform} from 'react-native';
 
 export const useBoot = (
   lottieRef: RefObject<LottieView>,
@@ -20,20 +21,29 @@ export const useBoot = (
     ASYNC_STORAGE_KEYS.ONBOARDING_COMPLETE,
   );
 
-  const onAnimationLoaded = () => {
-    Promise.all([user.getUser(), getOnboardingStatusFromStorage()]).then(
-      ([userData, onboardingStatus]) => {
-        onboardingStatus && dispatch(completeOnboarding());
-        !userData.error && dispatch(authorizeUser());
+  const boot = async () => {
+    await BootSplash.hide();
+    lottieRef.current!.play(...frames);
+    dispatch(endBoot());
+  };
 
-        // Timer used for iphone boot screen (white flickering)
-        setTimeout(async () => {
-          await BootSplash.hide();
-          lottieRef.current!.play(...frames);
-          dispatch(endBoot());
-        }, 1000);
-      },
-    );
+  const handleIOSBoot = () => setTimeout(boot, 1000);
+
+  const onAnimationLoaded = () => {
+    new Promise(resolve => {
+      user
+        .getUser()
+        .then(userData => !userData.error && dispatch(authorizeUser()))
+        .catch();
+
+      getOnboardingStatusFromStorage().then(
+        onboardingStatus => onboardingStatus && dispatch(completeOnboarding()),
+      );
+
+      resolve(null);
+    }).finally(() => {
+      Platform.OS === 'ios' ? handleIOSBoot() : boot();
+    });
   };
 
   return {bootEnded, onAnimationLoaded};

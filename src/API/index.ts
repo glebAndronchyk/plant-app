@@ -1,5 +1,4 @@
 import {createClient} from '@supabase/supabase-js';
-import EncryptedStorage from 'react-native-encrypted-storage';
 import {Database} from '@app_types/generated/api.ts';
 
 import {UserController, UserService} from './user';
@@ -7,6 +6,7 @@ import {OSMController, OSMService} from './osm';
 import {WeatherController, WeatherService} from './weather';
 import {RoomsController, RoomsService} from './rooms';
 import {CMSController, CMSService} from './cms';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const projectUrl = process.env.PROJECT_URL;
 const apiKey = process.env.SUPABASE_ACCESS_TOKEN;
@@ -17,7 +17,7 @@ if (!projectUrl || !apiKey) {
 
 export const supabase = createClient<Database>(projectUrl, apiKey, {
   auth: {
-    storage: EncryptedStorage,
+    storage: AsyncStorage,
   },
 });
 
