@@ -4,6 +4,8 @@ import {Button} from '@components/Button';
 import {COLORS} from '@theme/colors.ts';
 import Typography from '@theme/typography.ts';
 import {shadow} from '@theme/shadows.ts';
+import Animated from 'react-native-reanimated';
+import {FADE_IN_500} from '@theme/animations.ts';
 
 interface InfoCardProps {
   imageUrl?: string | null;
@@ -21,7 +23,7 @@ export const InfoCard = ({
   onActionPress,
 }: InfoCardProps) => {
   return (
-    <View style={[styles.container, shadow.sm]}>
+    <Animated.View entering={FADE_IN_500} style={[styles.container, shadow.sm]}>
       <View style={styles.cardTop}>
         {imageUrl && <Image style={styles.icon} source={{uri: imageUrl}} />}
         {title && (
@@ -38,7 +40,7 @@ export const InfoCard = ({
           <Button label={actionButtonTitle} onPress={onActionPress} />
         </View>
       )}
-    </View>
+    </Animated.View>
   );
 };
 

@@ -18,6 +18,8 @@ if (!projectUrl || !apiKey) {
 export const supabase = createClient<Database>(projectUrl, apiKey, {
   auth: {
     storage: AsyncStorage,
+    autoRefreshToken: true,
+    persistSession: true,
   },
 });
 

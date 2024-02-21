@@ -6,6 +6,12 @@ import {
   StyleSheet,
 } from 'react-native';
 import {PropsWithChildren} from 'react';
+import {
+  MEDIUM_IMAGE_CARD_SIZING,
+  SMALL_IMAGE_CARD_SIZING,
+} from '@theme/cards.ts';
+import Animated from 'react-native-reanimated';
+import {FADE_IN_500} from '@theme/animations.ts';
 
 export interface ImageCardProps extends PropsWithChildren {
   imageSource: ImageSourcePropType;
@@ -13,6 +19,9 @@ export interface ImageCardProps extends PropsWithChildren {
   containerStyle?: ImageBackgroundProps['style'];
   onPressIn?: () => void;
 }
+
+const AnimatedImageBackground =
+  Animated.createAnimatedComponent(ImageBackground);
 
 // children should be used with pre-built layers from ./layers directory
 export const ImageCard = ({
@@ -23,7 +32,8 @@ export const ImageCard = ({
   variant = 'medium',
 }: ImageCardProps) => {
   return (
-    <ImageBackground
+    <AnimatedImageBackground
+      entering={FADE_IN_500}
       resizeMode="cover"
       source={imageSource}
       style={[styles.container, styles[variant]]}>
@@ -32,7 +42,7 @@ export const ImageCard = ({
         style={[styles.pressable, containerStyle]}>
         {children}
       </Pressable>
-    </ImageBackground>
+    </AnimatedImageBackground>
   );
 };
 
@@ -45,15 +55,9 @@ const styles = StyleSheet.create({
     padding: 8,
     flex: 1,
   },
-  medium: {
-    width: 171,
-    height: 171,
-  },
+  medium: MEDIUM_IMAGE_CARD_SIZING,
   full: {
     width: '100%',
   },
-  small: {
-    width: 109,
-    height: 99,
-  },
+  small: SMALL_IMAGE_CARD_SIZING,
 });
