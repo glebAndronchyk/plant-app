@@ -30,18 +30,16 @@ export const useBoot = (
   const handleIOSBoot = () => setTimeout(boot, 1000);
 
   const onAnimationLoaded = () => {
-    const promises = [user.getSession(), getOnboardingStatusFromStorage()].map(
-      p => p.catch(e => e),
+    Promise.all([user.getSession(), getOnboardingStatusFromStorage()]).then(
+      ([sessionResponse, onboardingStatus]) => {
+        !sessionResponse.error &&
+          sessionResponse.data.session &&
+          dispatch(authorizeUser());
+        onboardingStatus && dispatch(completeOnboarding());
+
+        Platform.OS === 'ios' ? handleIOSBoot() : boot();
+      },
     );
-
-    Promise.all(promises).then(([sessionData, onboardingStatus]) => {
-      !sessionData.error &&
-        !(sessionData instanceof Error) &&
-        dispatch(authorizeUser());
-      onboardingStatus && dispatch(completeOnboarding());
-
-      Platform.OS === 'ios' ? handleIOSBoot() : boot();
-    });
   };
 
   return {bootEnded, onAnimationLoaded};
