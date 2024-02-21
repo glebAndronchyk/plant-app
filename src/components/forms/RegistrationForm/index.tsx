@@ -14,8 +14,13 @@ import {toFormikValidationSchema} from 'zod-formik-adapter';
 import {ukrainianPhoneMask} from '@constants/phoneMasks.ts';
 import {user} from '@API';
 import {RegistrationFormFields} from './types.ts';
+import {AuthStackScreenProps} from '@navigation/RootStack/AuthStack/types.ts';
 
-export const RegistrationForm = ({navigation}) => {
+interface RegistrationFormProps {
+  navigation: AuthStackScreenProps<'Registration'>['navigation'];
+}
+
+export const RegistrationForm = ({navigation}: RegistrationFormProps) => {
   const onSubmit = async ({
     email,
     password,

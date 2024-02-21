@@ -1,6 +1,5 @@
-import {StackScreenProps} from '@react-navigation/stack';
 import {bootSplashFrames} from '@animations/bootSplash/settings.ts';
-import {NavigationProp} from '@react-navigation/native';
+import {StackScreenProps} from '@react-navigation/stack';
 
 export type RootStackParamList = {
   HomeTabs: undefined;
@@ -11,12 +10,5 @@ export type RootStackParamList = {
   };
 };
 
-export type RootNavigation = NavigationProp<RootStackParamList>;
-
-export type RootNavigationProps<P extends keyof RootStackParamList = any> =
-  StackScreenProps<RootStackParamList, P>;
-
-export type WithRootNavigationProps<
-  T extends Record<string, unknown>,
-  P extends keyof RootStackParamList,
-> = T & RootNavigationProps<P>;
+export type RootStackScreenProps<T extends keyof RootStackParamList> =
+  StackScreenProps<RootStackParamList, T>;

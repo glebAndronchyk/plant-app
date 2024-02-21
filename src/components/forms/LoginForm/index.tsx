@@ -10,15 +10,14 @@ import {PasswordInput} from '@components/inputs/PasswordInput';
 import {toFormikValidationSchema} from 'zod-formik-adapter';
 import {loginSchema} from '@components/forms/LoginForm/schema.ts';
 import {useAppDispatch} from '@store/_hooks/useAppDispatch';
-import {RootNavigation} from '@navigation/RootStack/types.ts';
 import {user} from '@API';
 import {authorizeUser} from '@store/app';
 import {FieldNames} from '@constants/fieldNames.ts';
+import {AuthStackScreenProps} from '@navigation/RootStack/AuthStack/types.ts';
 
-// TODO NAVIGATION TYPES SHOULD BE REFACTORED
-interface LoginFormProps {
-  navigation: RootNavigation;
-}
+type LoginFormProps = {
+  navigation: AuthStackScreenProps<'Login'>['navigation'];
+};
 
 export const LoginForm = ({navigation}: LoginFormProps) => {
   const dispatch = useAppDispatch();

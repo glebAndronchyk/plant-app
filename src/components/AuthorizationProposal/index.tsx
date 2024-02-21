@@ -3,14 +3,13 @@ import {StyledText} from '@styled';
 import {Pressable, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {containerStyles} from '@theme/containers.ts';
-import {AuthStackNavigation} from '@navigation/RootStack/AuthStack/types.ts';
 
 interface AuthorizationProposalProps {
   type: 'sign-up' | 'log-in';
 }
 
 export const AuthorizationProposal = ({type}: AuthorizationProposalProps) => {
-  const {navigate} = useNavigation<AuthStackNavigation>();
+  const {navigate} = useNavigation();
   const onSignUp = () => navigate('Registration');
   const onLogIn = () => navigate('Login');
   const isSignUp = type === 'sign-up';

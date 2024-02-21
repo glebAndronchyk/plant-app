@@ -3,11 +3,9 @@ import {LoginForm} from '@components/forms/LoginForm';
 import {BetweenTextDivider} from '@components/dividers/BetweenTextDivider';
 import {OtherVariantsLogin} from '@components/OtherVariantsLogin';
 import {AuthorizationProposal} from '@components/AuthorizationProposal';
-import {RootNavigation} from '@navigation/RootStack/types.ts';
+import {AuthStackScreenProps} from '@navigation/RootStack/AuthStack/types.ts';
 
-interface LoginScreenProps {
-  navigation: RootNavigation;
-}
+type LoginScreenProps = AuthStackScreenProps<'Login'>;
 
 export const LoginScreen = ({navigation}: LoginScreenProps) => {
   return (
