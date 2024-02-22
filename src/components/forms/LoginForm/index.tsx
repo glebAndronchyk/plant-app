@@ -14,6 +14,7 @@ import {user} from '@API';
 import {authorizeUser} from '@store/app';
 import {FieldNames} from '@constants/fieldNames.ts';
 import {AuthStackScreenProps} from '@navigation/RootStack/AuthStack/types.ts';
+import {useSplashEnd} from '@hooks/useSplashEnd';
 
 type LoginFormProps = {
   navigation: AuthStackScreenProps<'Login'>['navigation'];
@@ -21,12 +22,24 @@ type LoginFormProps = {
 
 export const LoginForm = ({navigation}: LoginFormProps) => {
   const dispatch = useAppDispatch();
-  const onSubmit = async ({email, password}: LoginFormFields) => {
-    const resp = await user.login(email, password);
-    if (!resp.error) {
-      dispatch(authorizeUser());
-      navigation.navigate('HomeTabs');
-    }
+  const {startEndAnimation, onEndAnimationError} = useSplashEnd();
+
+  const onSubmit = ({email, password}: LoginFormFields) => {
+    startEndAnimation();
+    // Timeout used in order to wait for splash animation
+    setTimeout(async () => {
+      try {
+        const resp = await user.login(email, password);
+        if (!resp.error) {
+          dispatch(authorizeUser());
+          navigation.navigate('HomeTabs');
+        } else {
+          onEndAnimationError();
+        }
+      } catch {
+        onEndAnimationError();
+      }
+    }, 500);
   };
 
   return (
