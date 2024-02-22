@@ -34,7 +34,7 @@ export const WeatherInfo = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {width: 82, gap: 8},
+  container: {gap: 8},
   empty: {height: 10, width: '100%'},
   weatherInfo: {
     flexDirection: 'row',
