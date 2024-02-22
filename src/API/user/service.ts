@@ -6,6 +6,7 @@ export class UserService {
   getUser = async () => await supabase.auth.getUser();
   login = async (email: string, password: string) =>
     await supabase.auth.signInWithPassword({email, password});
+  logout = async () => await supabase.auth.signOut();
   register = async (
     email: string,
     password: string,
