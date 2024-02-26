@@ -6363,11 +6363,6 @@ react-native-bootsplash@^5.2.2:
     ts-dedent "^2.2.0"
     xml-formatter "^3.6.0"
 
-react-native-bouncy-checkbox@^3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/react-native-bouncy-checkbox/-/react-native-bouncy-checkbox-3.0.7.tgz#011aef92b4fbde2a1f223165626c56a9ffe637fb"
-  integrity sha512-776TgMGt9wTpOQA1TcvFjL5VUn6o945wFYf3Ztqva62/vT2o3JAezLiP7hYh2Svd+PewfWBYSPMs4jeaSoS8Sg==
-
 react-native-device-info@^10.12.0:
   version "10.12.0"
   resolved "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-10.12.0.tgz"
@@ -6418,11 +6413,6 @@ react-native-linear-gradient@^2.8.3:
   version "2.8.3"
   resolved "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.8.3.tgz"
   integrity sha512-KflAXZcEg54PXkLyflaSZQ3PJp4uC4whM7nT/Uot9m0e/qxFV3p6uor1983D1YOBJbJN7rrWdqIjq0T42jOJyA==
-
-react-native-radio-buttons-group@^3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-radio-buttons-group/-/react-native-radio-buttons-group-3.0.8.tgz#e49b072c4506cc2f9052ee921e81af1f5494a571"
-  integrity sha512-1xqFAp6UByW1S7U9aemaS0HwRb4RR05AGbIX0szigxz7BZhRgm7ttURMRkzaaW+4rQL/RccTYiNfdS6vRDr8Kg==
 
 react-native-reanimated@^3.6.1:
   version "3.6.2"
@@ -6786,13 +6776,6 @@ run-parallel@^1.1.9:
   integrity sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==
   dependencies:
     queue-microtask "^1.2.2"
-
-rxjs@^7.8.1:
-  version "7.8.1"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.1.tgz#6f6f3d99ea8044291efd92e7c7fcf562c4057543"
-  integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==
-  dependencies:
-    tslib "^2.1.0"
 
 safe-array-concat@^1.0.1:
   version "1.1.0"
@@ -7419,7 +7402,7 @@ tslib@^1.8.1:
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.1.0:
+tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3:
   version "2.6.2"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.2.tgz"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==

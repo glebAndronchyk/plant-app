@@ -10,7 +10,6 @@ import {ASYNC_STORAGE_KEYS} from '@asyncStorage/keys.ts';
 import {useAsyncStorage} from '@react-native-async-storage/async-storage';
 import {user} from '@API';
 import {Platform} from 'react-native';
-import {forkJoin, from, timer} from 'rxjs';
 
 export const useBoot = (
   lottieRef: RefObject<LottieView>,
@@ -28,21 +27,15 @@ export const useBoot = (
     dispatch(endBoot());
   };
 
-  const handleIOSBoot = () => timer(1000).subscribe(boot);
+  const handleIOSBoot = () => setTimeout(boot, 1000);
 
   const onAnimationLoaded = () => {
-    const session$ = from(user.getSession());
-    const onboardingStatus$ = from(getOnboardingStatusFromStorage());
-
-    forkJoin([session$, onboardingStatus$]).subscribe(
+    Promise.all([user.getSession(), getOnboardingStatusFromStorage()]).then(
       ([sessionResponse, onboardingStatus]) => {
-        if (!sessionResponse.error && sessionResponse.data.session) {
+        !sessionResponse.error &&
+          sessionResponse.data.session &&
           dispatch(authorizeUser());
-        }
-
-        if (onboardingStatus) {
-          dispatch(completeOnboarding());
-        }
+        onboardingStatus && dispatch(completeOnboarding());
 
         Platform.OS === 'ios' ? handleIOSBoot() : boot();
       },
