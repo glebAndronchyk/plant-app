@@ -1,5 +1,5 @@
 import {StyledText} from '@styled';
 
-export const RoomScreen = () => {
+export const PlantRoomScreen = () => {
   return <StyledText>Room</StyledText>;
 };

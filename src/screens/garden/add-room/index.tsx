@@ -1,5 +1,5 @@
-import {StyledText} from '@styled';
+import {AddRoomForm} from '@components/forms/AddRoomForm';
 
 export const AddRoomScreen = () => {
-  return <StyledText>Add Room</StyledText>;
+  return <AddRoomForm />;
 };

@@ -22,6 +22,7 @@ export const StyledTextInput = ({
   RightIconComponent,
   errorMessage,
   name,
+  label,
   mask = '',
   onChangeText,
   valueUsage = 'formatted',
@@ -63,35 +64,40 @@ export const StyledTextInput = ({
   const placeholder = props.placeholder || placeholders[name || ''];
 
   return (
-    <View style={inputStyles.container}>
-      <TextInputMask
-        {...props}
-        onChangeText={handleTextChange}
-        mask={mask}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        placeholder={placeholder}
-        cursorColor={INPUT_COLOR}
-        placeholderTextColor={
-          isFocused || !!errorMessage ? COLORS.BLACK : INPUT_COLOR
-        }
-        secureTextEntry={isHidden}
-        style={inputStyles.input}
-      />
-      {RightIconComponent && (
-        <View style={inputStyles.rightIcon}>
-          <RightIconComponent
-            toggleText={toggleText}
-            isTextHidden={isHidden}
-            hideText={hideText}
-            uncoverText={uncoverText}
-            color={INPUT_COLOR}
-          />
-        </View>
-      )}
-      {errorMessage && (
-        <StyledText style={inputStyles.errorMessage}>{errorMessage}</StyledText>
-      )}
+    <View style={{gap: 8}}>
+      {label && <StyledText>{label}</StyledText>}
+      <View style={inputStyles.container}>
+        <TextInputMask
+          {...props}
+          onChangeText={handleTextChange}
+          mask={mask}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          cursorColor={INPUT_COLOR}
+          placeholderTextColor={
+            isFocused || !!errorMessage ? COLORS.BLACK : INPUT_COLOR
+          }
+          secureTextEntry={isHidden}
+          style={inputStyles.input}
+        />
+        {RightIconComponent && (
+          <View style={inputStyles.rightIcon}>
+            <RightIconComponent
+              toggleText={toggleText}
+              isTextHidden={isHidden}
+              hideText={hideText}
+              uncoverText={uncoverText}
+              color={INPUT_COLOR}
+            />
+          </View>
+        )}
+        {errorMessage && (
+          <StyledText style={inputStyles.errorMessage}>
+            {errorMessage}
+          </StyledText>
+        )}
+      </View>
     </View>
   );
 };

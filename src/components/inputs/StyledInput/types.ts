@@ -15,6 +15,7 @@ export interface StyledTextInputProps
   disabled?: boolean;
   defaultHidden?: boolean;
   errorMessage?: string | false;
+  label?: string;
   RightIconComponent?: ({
     hideText,
     uncoverText,
