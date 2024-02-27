@@ -12,10 +12,9 @@ interface SelectedAreaProps {
 const getNotchText = (numbers: number[]) => {
   return numbers
     .reduce<string[]>((acc, number) => {
-      if (number > 0) {
-        return [...acc, `+${number}`];
-      }
-      return [...acc, `${number}`];
+      const n = number > 0 ? `+${number}` : `${number}`;
+
+      return [...acc, n];
     }, [])
     .join(' - ');
 };
