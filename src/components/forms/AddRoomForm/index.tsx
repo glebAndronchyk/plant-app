@@ -5,6 +5,7 @@ import {useState} from 'react';
 import {RadioButtonProps} from 'react-native-radio-buttons-group';
 import {getRadioButtonProps} from '@components/inputs/radio/StyledRadioGroup/settings.ts';
 import {Temperature} from '@components/Temperature';
+import {LightLevelMeasurement} from '@components/LightLevelMeasurement';
 
 const radioButtons: RadioButtonProps[] = [
   getRadioButtonProps('outdoor', 'Outdoor'),
@@ -25,7 +26,7 @@ export const AddRoomForm = () => {
         onPress={setSelectedType}
       />
       <Temperature />
-      {/*<LightLevel />*/}
+      <LightLevelMeasurement />
       {/*<Plants />*/}
       {/*</Formik>*/}
     </View>

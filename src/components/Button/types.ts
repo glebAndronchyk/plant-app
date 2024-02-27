@@ -1,4 +1,4 @@
-import {PressableProps} from 'react-native';
+import {PressableProps, ViewStyle} from 'react-native';
 import {SVGComponent} from '@app_types/svg.ts';
 
 export interface ButtonProps extends Omit<PressableProps, 'style'> {
@@ -8,4 +8,5 @@ export interface ButtonProps extends Omit<PressableProps, 'style'> {
   variant?: 'filled' | 'outlined';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   customIconStyles?: Record<string, unknown>;
+  buttonStyle?: ViewStyle;
 }

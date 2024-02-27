@@ -18,6 +18,7 @@ export const Button = ({
   RightIcon,
   variant = 'filled',
   size = 'lg',
+  buttonStyle,
   ...props
 }: ButtonProps) => {
   const currentVariant = variantsStyles(!!props.disabled)[variant];
@@ -54,7 +55,11 @@ export const Button = ({
       ]}>
       <Pressable
         {...props}
-        style={[defaultButtonStyles.pressable, currentSize.pressable]}
+        style={[
+          defaultButtonStyles.pressable,
+          currentSize.pressable,
+          buttonStyle,
+        ]}
         onPressIn={onPressIn}>
         {LeftIcon && <LeftIcon stroke={currentVariant.icon.color} />}
         <StyledText
