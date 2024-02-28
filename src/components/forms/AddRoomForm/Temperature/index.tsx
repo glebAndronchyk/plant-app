@@ -6,6 +6,7 @@ import {settings} from './settings.ts';
 import {useCallback, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {StyledText} from '@styled';
+import {Label} from '@components/forms/AddRoomForm/Label';
 
 export const Temperature = () => {
   const [lowDefault, setLowDefault] = useState(settings.low);
@@ -23,7 +24,8 @@ export const Temperature = () => {
   );
 
   return (
-    <View>
+    <View style={{marginBottom: 24}}>
+      <Label text="Temperature" />
       <View style={styles.markings}>
         <StyledText>{settings.min}°</StyledText>
         <StyledText>{settings.max}°</StyledText>

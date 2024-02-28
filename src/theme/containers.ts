@@ -13,6 +13,12 @@ export const containerStyles = () =>
       alignItems: 'center',
       marginHorizontal: 'auto',
     },
+    listContainer: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      flex: 1,
+      gap: 16,
+    },
     marginContainer: {
       marginHorizontal: 16,
     },

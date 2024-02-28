@@ -10,6 +10,7 @@ export const defaultButtonStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 4,
+    flex: 1,
   },
 });
 

@@ -1,18 +1,25 @@
 import {rooms} from '@API';
 import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
 
-import {PlusCard} from './PlusCard';
+import {PlusCard} from '../../cards/PlusCard';
 import {RoomCard} from './RoomCard';
 import {StyledText} from '@styled';
 import Typography from '@theme/typography.ts';
 import {useSupabaseOnMount} from '@hooks/useSupabaseOnMount';
 import {SkeletonsContainer} from '@components/skeletons/SkeletonsContainer';
 import {MEDIUM_IMAGE_CARD_SIZING} from '@theme/cards.ts';
+import {useNavigation} from '@react-navigation/native';
+import {HomeNavigation} from '@navigation/RootStack/HomeTabs/types.ts';
 
 const {width: screenWidth} = Dimensions.get('window');
 
 export const SmallGardenView = () => {
   const {data: userRooms} = useSupabaseOnMount(rooms.getAll);
+  const {navigate} = useNavigation<HomeNavigation>();
+
+  const handlePress = () => {
+    navigate('AddRoom');
+  };
 
   return (
     <View>
@@ -32,7 +39,7 @@ export const SmallGardenView = () => {
             <RoomCard key={room.id} room={room} />
           ))}
         </SkeletonsContainer>
-        <PlusCard />
+        <PlusCard onPress={handlePress} label="Add room" />
       </ScrollView>
     </View>
   );
